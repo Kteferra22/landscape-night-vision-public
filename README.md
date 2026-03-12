@@ -16,7 +16,7 @@ This leads to:
 
 • wasted hardware  
 • poor lighting placement  
-• costly redesigns
+• costly redesigns  
 
 The goal of this project was to create a **visual planning tool** that allows users to preview lighting before installation.
 
@@ -53,9 +53,13 @@ This enables homeowners and landscapers to experiment with lighting layouts befo
 • TypeScript  
 • Canvas rendering for interactive scene manipulation  
 
+### AI / Processing
+• OpenAI API  
+• GPT-based scene interpretation  
+• Image preprocessing pipeline  
+
 ### Backend
-• Serverless image processing pipeline  
-• Scene preprocessing and lighting simulation  
+• Serverless processing architecture  
 
 ### Deployment
 • Vercel  
@@ -64,27 +68,50 @@ This enables homeowners and landscapers to experiment with lighting layouts befo
 
 ## Engineering Challenges
 
-### Converting daytime scenes into believable night environments
+### Generative AI reliability
 
-Early experiments produced unrealistic lighting and overly dark environments.
+Initial versions relied heavily on generative AI to interpret and transform landscape scenes.  
+However, generative models often introduced **hallucinations and inconsistent scene interpretation**, which made lighting previews unreliable.
 
-We refined the processing pipeline to maintain landscape detail while introducing realistic nighttime shading.
+To solve this, the system was redesigned to combine:
+
+• **Generative AI capabilities** for scene understanding  
+• **Deterministic system logic** for lighting placement and simulation
+
+This hybrid approach allowed us to maintain AI flexibility while ensuring predictable results.
+
+---
+
+### Deterministic + AI architecture
+
+Rather than allowing AI to fully control the rendering pipeline, the application uses a layered system:
+
+1. AI-assisted preprocessing of the scene
+2. Deterministic rendering rules for fixture placement
+3. Controlled lighting simulation logic
+
+This ensures lighting placement behaves consistently while still benefiting from AI-powered image interpretation.
+
+---
 
 ### Interactive fixture placement
 
-Users needed to place fixtures directly on the image while adjusting brightness and orientation.
+Users needed to place fixtures directly on the scene while adjusting brightness and orientation.
 
-This required building a canvas interaction layer capable of:
+This required building a custom canvas interaction layer capable of:
 
 • selecting fixtures  
 • rotating fixtures  
 • adjusting brightness  
+• previewing lighting effects  
+
+---
 
 ### Balancing realism vs performance
 
-High quality lighting simulation can become computationally expensive.
+Realistic lighting simulations can become computationally expensive.
 
-We prioritized fast previews while maintaining visual realism.
+The system prioritizes **fast visual previews** while maintaining believable lighting results.
 
 ---
 
@@ -129,8 +156,6 @@ Future improvements include:
 ---
 
 ## Live Demo
-
-You can view the live demo here:
 
 https://landscape-night-vision-ui.vercel.app
 
