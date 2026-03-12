@@ -8,7 +8,7 @@ The application converts a daytime photo of a property into a simulated nighttim
 
 ## The Problem
 
-Outdoor lighting installation is expensive and difficult to visualize ahead of time.  
+Outdoor lighting installation is expensive and difficult to visualize ahead of time.
 
 Homeowners and landscapers often rely on sketches, rough plans, or trial-and-error installations to determine fixture placement.
 
@@ -26,10 +26,10 @@ The goal of this project was to create a **visual planning tool** that allows us
 
 Landscape Night Vision provides a simple workflow:
 
-1. Upload a daytime photo of a landscape or home exterior
-2. Convert the scene into a nighttime simulation
-3. Place lighting fixtures interactively
-4. Preview lighting results before installation
+1. Upload a daytime photo of a landscape or home exterior  
+2. Convert the scene into a nighttime simulation  
+3. Place lighting fixtures interactively  
+4. Preview lighting results before installation  
 
 This enables homeowners and landscapers to experiment with lighting layouts before purchasing hardware.
 
@@ -42,48 +42,48 @@ This enables homeowners and landscapers to experiment with lighting layouts befo
 • Day → night visual simulation  
 • Interactive fixture placement  
 • Lighting brightness adjustment  
-• Real-time preview generation
+• Real-time preview generation  
 
 ---
 
 ## Tech Stack
 
-Frontend
-
+### Frontend
 • React  
 • TypeScript  
-• Canvas rendering for interactive scene manipulation
+• Canvas rendering for interactive scene manipulation  
 
-Backend
-
+### Backend
 • Serverless image processing pipeline  
-• Scene preprocessing and lighting simulation
+• Scene preprocessing and lighting simulation  
 
-Deployment
-
-• Vercel
+### Deployment
+• Vercel  
 
 ---
 
 ## Engineering Challenges
 
-### 1. Converting daytime scenes into believable night environments
+### Converting daytime scenes into believable night environments
 
-Early experiments produced unrealistic lighting and overly dark environments.  
+Early experiments produced unrealistic lighting and overly dark environments.
+
 We refined the processing pipeline to maintain landscape detail while introducing realistic nighttime shading.
 
-### 2. Interactive fixture placement
+### Interactive fixture placement
 
-Users needed to place fixtures directly on the image while adjusting brightness and orientation.  
+Users needed to place fixtures directly on the image while adjusting brightness and orientation.
+
 This required building a canvas interaction layer capable of:
 
 • selecting fixtures  
 • rotating fixtures  
-• adjusting brightness
+• adjusting brightness  
 
-### 3. Balancing realism vs performance
+### Balancing realism vs performance
 
-High quality lighting simulation can become computationally expensive.  
+High quality lighting simulation can become computationally expensive.
+
 We prioritized fast previews while maintaining visual realism.
 
 ---
@@ -91,3 +91,51 @@ We prioritized fast previews while maintaining visual realism.
 ## Architecture Overview
 
 The system consists of three main layers:
+
+User  
+↓  
+React Frontend (interactive UI)  
+↓  
+Serverless Processing Layer  
+↓  
+Lighting Simulation Output  
+
+Users interact with the frontend to upload images and place fixtures while the backend processes the scene and generates lighting previews.
+
+---
+
+## Code Examples
+
+This repository contains selected examples demonstrating key parts of the system:
+
+• Interactive fixture placement logic  
+• Image preprocessing workflow  
+• State management patterns used in the UI  
+
+Full production code is not included because portions of the project remain under active development.
+
+---
+
+## Current Status
+
+Landscape Night Vision is currently in **active development**.
+
+Future improvements include:
+
+• improved lighting realism  
+• expanded fixture libraries  
+• real-time lighting adjustments  
+
+---
+
+## Live Demo
+
+You can view the live demo here:
+
+https://landscape-night-vision-ui.vercel.app
+
+---
+
+## Author
+
+Kidus Teferra
