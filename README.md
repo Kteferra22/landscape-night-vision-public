@@ -49,20 +49,38 @@ This enables homeowners and landscapers to experiment with lighting layouts befo
 ## Tech Stack
 
 ### Frontend
-• React  
-• TypeScript  
-• Canvas rendering for interactive scene manipulation  
 
-### AI / Processing
-• OpenAI API  
-• GPT-based scene interpretation  
-• Image preprocessing pipeline  
+• **Lovable** — rapid frontend development environment used to build the interactive UI  
+• **React + TypeScript** — component architecture and state management  
+• **Canvas rendering** — interactive fixture placement and scene manipulation  
 
 ### Backend
-• Serverless processing architecture  
+
+• **Supabase** — backend services, database, and asset storage  
+• **Serverless architecture** — scalable processing of uploaded scenes  
+
+### Image Processing
+
+• **Cloudinary** — image optimization and transformation pipeline  
+
+Uploaded images from users often ranged between **10–12MB**.  
+Using Cloudinary transformations, we reduced images to approximately **~300KB** before storage and processing.
+
+This optimization:
+
+• significantly reduced storage costs  
+• improved upload speeds  
+• lowered OpenAI processing costs  
+• improved rendering performance
+
+### AI Layer
+
+• **OpenAI API** — AI-assisted scene interpretation and transformation  
+• hybrid **generative + deterministic pipeline**
 
 ### Deployment
-• Vercel  
+
+• **Vercel**
 
 ---
 
@@ -70,64 +88,89 @@ This enables homeowners and landscapers to experiment with lighting layouts befo
 
 ### Generative AI reliability
 
-Initial versions relied heavily on generative AI to interpret and transform landscape scenes.  
-However, generative models often introduced **hallucinations and inconsistent scene interpretation**, which made lighting previews unreliable.
+Initial experiments relied heavily on generative AI to interpret and transform landscape scenes.
 
-To solve this, the system was redesigned to combine:
+However, generative models frequently produced **hallucinations or inconsistent scene outputs**, which made lighting previews unreliable.
 
-• **Generative AI capabilities** for scene understanding  
-• **Deterministic system logic** for lighting placement and simulation
+To address this, the system architecture was redesigned to combine:
 
-This hybrid approach allowed us to maintain AI flexibility while ensuring predictable results.
+• **Generative AI capabilities** for scene interpretation  
+• **Deterministic system logic** for fixture placement and lighting simulation
+
+This hybrid architecture ensured the system remained predictable while still benefiting from AI-driven scene understanding.
 
 ---
 
-### Deterministic + AI architecture
+### Deterministic + AI system design
 
-Rather than allowing AI to fully control the rendering pipeline, the application uses a layered system:
+Instead of allowing AI to control the entire pipeline, the system uses a layered architecture:
 
-1. AI-assisted preprocessing of the scene
-2. Deterministic rendering rules for fixture placement
-3. Controlled lighting simulation logic
+1. AI-assisted scene interpretation
+2. deterministic lighting placement rules
+3. controlled lighting simulation rendering
 
-This ensures lighting placement behaves consistently while still benefiting from AI-powered image interpretation.
+This approach provides stability while preserving AI flexibility.
+
+---
+
+### Image optimization and processing costs
+
+User-uploaded images frequently exceeded **10MB**, which created several problems:
+
+• slow upload times  
+• expensive AI processing costs  
+• increased storage usage
+
+Using **Cloudinary's transformation pipeline**, images are automatically resized and optimized before storage in Supabase.
+
+The result:
+
+10–12MB → ~300KB  
+
+This dramatically reduced:
+
+• storage costs  
+• OpenAI processing load  
+• frontend rendering time
 
 ---
 
 ### Interactive fixture placement
 
-Users needed to place fixtures directly on the scene while adjusting brightness and orientation.
+Users needed to place lighting fixtures directly on the scene while adjusting brightness and orientation.
 
-This required building a custom canvas interaction layer capable of:
+To support this, a custom interaction layer was built that allows:
 
-• selecting fixtures  
-• rotating fixtures  
-• adjusting brightness  
-• previewing lighting effects  
+• fixture selection  
+• rotation  
+• brightness adjustments  
+• visual preview of lighting results
 
 ---
 
 ### Balancing realism vs performance
 
-Realistic lighting simulations can become computationally expensive.
+Realistic lighting simulations can quickly become computationally expensive.
 
-The system prioritizes **fast visual previews** while maintaining believable lighting results.
+The system prioritizes **fast visual previews** while maintaining believable lighting results for planning purposes.
 
 ---
 
 ## Architecture Overview
 
-The system consists of three main layers:
-
 User  
 ↓  
-React Frontend (interactive UI)  
+Lovable / React Frontend  
 ↓  
-Serverless Processing Layer  
+Image Optimization (Cloudinary)  
+↓  
+Backend Storage + Logic (Supabase)  
+↓  
+AI Processing (OpenAI API)  
 ↓  
 Lighting Simulation Output  
 
-Users interact with the frontend to upload images and place fixtures while the backend processes the scene and generates lighting previews.
+Users interact with the frontend to upload images and place fixtures while backend services process and generate the final lighting preview.
 
 ---
 
@@ -135,9 +178,9 @@ Users interact with the frontend to upload images and place fixtures while the b
 
 This repository contains selected examples demonstrating key parts of the system:
 
-• Interactive fixture placement logic  
-• Image preprocessing workflow  
-• State management patterns used in the UI  
+• interactive fixture placement logic  
+• image preprocessing workflow  
+• UI state management patterns  
 
 Full production code is not included because portions of the project remain under active development.
 
